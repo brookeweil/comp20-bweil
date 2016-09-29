@@ -1,0 +1,32 @@
+@media screen {
+
+    .homer{
+        width:312.5px; height:312.5px; background:url(homer.jpg) 0 0;
+    }
+}
+
+
+@media screen and (max-width : 1200px) {
+  
+    .homer{
+        width:312.5px; height:312.5px; background:url(homer.jpg) 312.5px 0px;
+    }
+}
+
+@media screen and (max-width : 800px) {
+  
+    .homer{
+        width:312.5px; height:312.5px; background:url(homer.jpg) 0 312.5px;
+    }
+}
+
+@media screen and (max-width : 400px) {
+  
+    .homer{
+        width:312.5px; height:312.5px; background:url(homer.jpg) 312.5px 312.5px;
+    }
+}
+
+
+
+
