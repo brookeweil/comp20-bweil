@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Classic Movie</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+<h1 id="title">Classic Movie</h1>
+
+<video src="https://www.cs.tufts.edu/comp/20/classic.mp4" id="classic_video" controls></video>
+<div id="movie_quotes"> Click play! </div>
+
+<script>
+
+    // Function to add captions
+    function modifyCaption() {
+        var quotes = document.getElementById("movie_quotes");
+        // quotes.firstChild.nodeValue = v.currentTime;
+        if (v.currentTime >= 0){
+            quotes.firstChild.nodeValue = "";
+        }        
+        if (v.currentTime >= 23){
+            quotes.firstChild.nodeValue = "Igor: DR. FRANKENSTEIN?!?!?";
+        }
+        if (v.currentTime >= 27){
+            quotes.firstChild.nodeValue = "";
+        }
+        if (v.currentTime >= 30){
+            quotes.firstChild.nodeValue = "Dr. Frederick Frankenstein: Frokensteen.";
+        }
+        if (v.currentTime >= 33){
+            quotes.firstChild.nodeValue = "";
+        }
+        if (v.currentTime >= 34){
+            quotes.firstChild.nodeValue = "Igor: You're putting me on.";
+        }
+        if (v.currentTime >= 37){
+            quotes.firstChild.nodeValue = "Dr. Frederick Frankenstein: No, it's pronounced, 'Frokensteen'.";
+        }
+        if (v.currentTime >= 40){
+            quotes.firstChild.nodeValue = "Igor: Do you also say Froaderick?";
+        }
+        if (v.currentTime >= 42){
+            quotes.firstChild.nodeValue = "Dr. Frederick Frankenstein: No . . . 'Frederick.'";
+        }
+        if (v.currentTime >= 44){
+            quotes.firstChild.nodeValue = "Igor: Well, why isn't it 'Froaderick Frokensteen'?";
+        }
+        if (v.currentTime >= 46){
+            quotes.firstChild.nodeValue = "Dr. Frederick Frankenstein: It isn't, it's 'Frederick Frokensteen'";
+        }        
+        if (v.currentTime >= 50){
+            quotes.firstChild.nodeValue = "Igor: I see.";
+        }        
+        if (v.currentTime >= 52){
+            quotes.firstChild.nodeValue = "Dr. Frederick Frankenstein: You must be Igor. [He pronounces it ee-gor.]";
+        } 
+        if (v.currentTime >= 53){
+            quotes.firstChild.nodeValue = "Igor: No, it's pronounced 'eye-gor.'";
+        }        
+        if (v.currentTime >= 56){
+            quotes.firstChild.nodeValue = "Dr. Frederick Frankenstein: But they told me it was 'ee-gor'...";
+        }        
+        if (v.currentTime >= 59){
+            quotes.firstChild.nodeValue = "Igor: Well, they were wrong then, weren't they?";
+        }        
+        if (v.currentTime >= 61){
+            quotes.firstChild.nodeValue = "Dr. Frederick Frankenstein: Uh, you were sent here by Herr Falkstein, weren't you?";
+        }
+        if (v.currentTime >= 64){
+            quotes.firstChild.nodeValue = "Igor: Yes. My grandfather used to work for your grandfather.";
+        }
+        if (v.currentTime >= 68){
+            quotes.firstChild.nodeValue = "Dr. Frederick Frankenstein: How nice.";
+        }        
+        if (v.currentTime >= 72){
+            quotes.firstChild.nodeValue = "Igor: Of course the rates have gone up.";
+        }        
+        if (v.currentTime >= 74){
+            quotes.firstChild.nodeValue = "Dr. Frederick Frankenstein: Of course, of course, I'm sure we'll get along splendidly. Oh, I uh, sorry, you know I don't mean to embarrass you, but I'm rather a brilliant surgeon. Perhaps I can help you with that hump.";
+        }    
+        if (v.currentTime >= 89){
+            quotes.firstChild.nodeValue = "Igor: What hump?";
+        }     
+        if (v.currentTime >= 91){
+            quotes.firstChild.nodeValue = "";
+        } 
+    }
+
+    // Add event listener
+    var v = document.getElementsByTagName("video")[0];
+    v.addEventListener("timeupdate", modifyCaption);
+
+
+</script>
+</body>
+</html> 

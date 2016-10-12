@@ -1,0 +1,15 @@
+h1{
+    color: green;
+}
+
+body {
+    background-color: black;
+}
+
+#movie_quotes {
+    color: purple;
+}
+
+video {
+    max-height: 500px;
+}
