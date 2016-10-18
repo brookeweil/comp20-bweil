@@ -12,8 +12,8 @@
     var infowindow = new google.maps.InfoWindow();
 
     var stationMarkers = [];
-    var branch1Coords = [];
-    var branch2Coords = [];
+    var branch1Coords  = [];
+    var branch2Coords  = [];
     var branch1Path;
     var branch2Path;
     var trainStops;
@@ -78,12 +78,12 @@
     // http://stackoverflow.com/questions/14560999/using-the-haversine-formula-in-javascript
     function haversine(lat1, lon1, lat2, lon2){
 
-        var R = 3959; // miles
-        var x1 = lat2-lat1;
+        var R    = 3959; // miles
+        var x1   = lat2-lat1;
         var dLat = toRad(x1);  
-        var x2 = lon2-lon1;
+        var x2   = lon2-lon1;
         var dLon = toRad(x2);  
-        var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
+        var a    = Math.sin(dLat/2) * Math.sin(dLat/2) + 
                         Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * 
                         Math.sin(dLon/2) * Math.sin(dLon/2);  
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
@@ -123,11 +123,36 @@
             station.info = new google.maps.InfoWindow({
                 content: "<h4>" + station.name + "</h4>",
             });
-            console.log ("Adding listener for " + station.marker.title);
             station.marker.addListener('click', function() {
                 station.info.open(map, station.marker);
             });
     }
+
+    
+    function loadTrainStops() {
+        // Step 1: create an instance of XMLHttpRequest
+        var request = new XMLHttpRequest();
+        // Step 2: Make request to remote resource
+        // NOTE: https://messagehub.herokuapp.com has cross-origin resource sharing enabled
+        request.open("get", "https://rocky-taiga-26352.herokuapp.com/redline.json", true);
+        // Step 3: Create handler function to do something with data in response
+        request.onreadystatechange = funex;
+        // Step 4: Send the request
+        request.send();
+    }
+    function funex() {
+        console.log("The data is => " + request.responseText);
+        // Step 5: When data is received, get it and do something with it
+        if (request.readyState == 4 && request.status == 200) {
+        // if (request.status == 200) {
+            console.log("Saving the data");
+            // Step 5A: get the response text
+            var theData = request.responseText;
+            // Step 5B: parse the text into JSON
+            trainStops = JSON.parse(theData);
+        }
+    }
+
 
     function renderStations(){
 
@@ -169,32 +194,6 @@
         branch2Path.setMap(map);
     }
 
-    function loadTrainStops() {
-        // Step 1: create an instance of XMLHttpRequest
-        var request = new XMLHttpRequest();
-        // Step 2: Make request to remote resource
-        // NOTE: https://messagehub.herokuapp.com has cross-origin resource sharing enabled
-        request.open("get", "https://rocky-taiga-26352.herokuapp.com/redline.json", true);
-        // Step 3: Create handler function to do something with data in response
-        request.onreadystatechange = funex;
-        // Step 4: Send the request
-        request.send();
-    }
-    function funex() {
-        console.log("The data is => " + request.responseText);
-        // Step 5: When data is received, get it and do something with it
-        // if (request.readyState == 4 && request.status == 200) {
-        if (request.status == 200) {
-            console.log("Saving the data");
-            // Step 5A: get the response text
-            var theData = request.responseText;
-            // Step 5B: parse the text into JSON
-            trainStops = JSON.parse(theData);
-        }
-    }
-
-
-
     function renderMap() {
         
         var closestStation = findClosestStation();
@@ -204,9 +203,6 @@
         
         // Update map and go there...
         map.panTo(me);
-
-        // Put stations and routes on map
-        // renderStations();
 
         // Create a marker
         marker = new google.maps.Marker({
@@ -220,7 +216,7 @@
           path: [ {lat: myLat, lng: myLng}, 
                   {lat: closestStation.station.lat, lng:closestStation.station.lng} ],
           geodesic: true,
-          strokeColor: '#9eebff',
+          strokeColor: '#428ff4',
           strokeOpacity: 1.0,
           strokeWeight: 3
         });
