@@ -19,7 +19,6 @@
     var trainStops;
     var trainIcon = {
         url: "train.png",
-        size: new google.maps.Size(100, 100),
         scaledSize: new google.maps.Size(22, 22),
         anchor: new google.maps.Point(11, 11)
     };
@@ -122,7 +121,7 @@
 
             // Add info windows with listeners
             station.info = new google.maps.InfoWindow({
-                content: station.name
+                content: "<h4>" + station.name + "</h4>",
             });
             console.log ("Adding listener for " + station.marker.title);
             station.marker.addListener('click', function() {
