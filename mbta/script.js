@@ -125,7 +125,14 @@
             station.marker.addListener('click', function() {
 
                 station.info.open(map, station.marker);
+
+                //Find predicted stops and sort by time
                 var predictedStops = findPredictedStops(index);
+                predictedStops.sort(function (a, b) {
+                    return (a.time - b.time);
+                });
+
+                // Add predicted stops to info window
                 var listOfStops = "";
                 for (var i in predictedStops) {
                     listOfStops += "<p> Train to " + predictedStops[i].dest 
@@ -150,7 +157,6 @@
         request.send();
     }
     function funex() {
-        // console.log("The data is => " + request.responseText);
         // Step 5: When data is received, get it and do something with it
 
         if (request.readyState == 4 && request.status == 200) {
@@ -159,6 +165,7 @@
             // Step 5B: parse the text into JSON
             trainStops = JSON.parse(trainData);
         }
+        else if (request.status == 404) window.location.reload();
     }
 
     function findPredictedStops(stationIndex){
@@ -168,13 +175,8 @@
         for  (var i in trainStops["TripList"]["Trips"]) {
             for (var j in trainStops["TripList"]["Trips"][i]["Predictions"]) {
 
-                // console.log(trainStops["TripList"]["Trips"][0]["Predictions"][0]);
-                // console.log(trainStops["TripList"]["Trips"][0]["Predictions"][0].Stop);
-                // console.log(["TripList"]["Trips"][i]["Predictions"][j]);
-
                 if (trainStops["TripList"]["Trips"][i]["Predictions"][j].Stop ==
                     stationMarkers[stationIndex].name)
-                        // console.log(trainStops["TripList"]["Trips"][i]["Predictions"][j]);
                     predictedStops.push(
                         {dest: trainStops["TripList"]["Trips"][i].Destination,
                          time: (trainStops["TripList"]["Trips"][i]["Predictions"][j].Seconds) / 60 })

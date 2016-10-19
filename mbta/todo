@@ -22,7 +22,6 @@ TODO
 
 <!-- Render a polyline (any color) that connects "your" marker to the marker of the closest MBTA Red Line subway station.  -->
 
-Upon clicking on a MBTA Red Line subway station marker, display an infowindow of the schedule of upcoming trains for that station. Use JSON API of Red Line trains that I provide (see more details below).
+<!-- Upon clicking on a MBTA Red Line subway station marker, display an infowindow of the schedule of upcoming trains for that station. Use JSON API of Red Line trains that I provide (see more details below). -->
 
-fix precision of arrival time
 fix 404 error handling
