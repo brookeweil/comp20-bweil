@@ -126,6 +126,7 @@
             });
             station.marker.addListener('click', function() {
                 station.info.open(map, station.marker);
+                findPredictedStops(index);
             });
     }
 
@@ -141,7 +142,7 @@
         request.send();
     }
     function funex() {
-        console.log("The data is => " + request.responseText);
+        // console.log("The data is => " + request.responseText);
         // Step 5: When data is received, get it and do something with it
 
         if (request.readyState == 4 && request.status == 200) {
@@ -149,6 +150,23 @@
             trainData = request.responseText;
             // Step 5B: parse the text into JSON
             trainStops = JSON.parse(trainData);
+        }
+    }
+
+    function findPredictedStops(stationIndex){
+
+        for  (var i in trainStops["TripList"]["Trips"]) {
+            for (var j in trainStops["TripList"]["Trips"][i]["Predictions"]) {
+
+                // console.log(trainStops["TripList"]["Trips"][0]["Predictions"][0]);
+                // console.log(trainStops["TripList"]["Trips"][0]["Predictions"][0].Stop);
+                // console.log(["TripList"]["Trips"][i]["Predictions"][j]);
+
+                if (trainStops["TripList"]["Trips"][i]["Predictions"][j].Stop ==
+                    stationMarkers[stationIndex].name)
+                        console.log(trainStops["TripList"]["Trips"][i]["Predictions"][j]);
+
+            }
         }
     }
 
