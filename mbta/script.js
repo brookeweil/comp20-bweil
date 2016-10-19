@@ -121,12 +121,20 @@
             station.marker.setMap(map);
 
             // Add info windows with listeners
-            station.info = new google.maps.InfoWindow({
-                content: "<h4>" + station.name + "</h4>",
-            });
+            station.info = new google.maps.InfoWindow();
             station.marker.addListener('click', function() {
+
                 station.info.open(map, station.marker);
-                findPredictedStops(index);
+                var predictedStops = findPredictedStops(index);
+                var listOfStops = "";
+                for (var i in predictedStops) {
+                    listOfStops += "<p> Train to " + predictedStops[i].dest 
+                    + " in " + predictedStops[i].time.toPrecision(3) +
+                    " minutes </p>" 
+                }
+                station.info.setContent(
+                    "<h4>" + station.name + "</h4>" + 
+                    "<h5> Upcoming Trains: </h5>" + listOfStops )
             });
     }
 
@@ -155,6 +163,8 @@
 
     function findPredictedStops(stationIndex){
 
+        var predictedStops = [];
+
         for  (var i in trainStops["TripList"]["Trips"]) {
             for (var j in trainStops["TripList"]["Trips"][i]["Predictions"]) {
 
@@ -164,10 +174,13 @@
 
                 if (trainStops["TripList"]["Trips"][i]["Predictions"][j].Stop ==
                     stationMarkers[stationIndex].name)
-                        console.log(trainStops["TripList"]["Trips"][i]["Predictions"][j]);
-
+                        // console.log(trainStops["TripList"]["Trips"][i]["Predictions"][j]);
+                    predictedStops.push(
+                        {dest: trainStops["TripList"]["Trips"][i].Destination,
+                         time: (trainStops["TripList"]["Trips"][i]["Predictions"][j].Seconds) / 60 })
             }
         }
+        return predictedStops;
     }
 
 
@@ -244,7 +257,7 @@
             infowindow.open(map, marker);
             infowindow.setContent(
                 "<h4> Closest station: </h4> " + closestStation.station.name +
-                "<h4>Distance away: </h4>" + closestStation.dist.toPrecision(1)
+                "<h4>Distance away: </h4>" + closestStation.dist.toPrecision(2)
                 + " miles");
         });
     }
