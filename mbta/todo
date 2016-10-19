@@ -24,4 +24,9 @@ TODO
 
 <!-- Upon clicking on a MBTA Red Line subway station marker, display an infowindow of the schedule of upcoming trains for that station. Use JSON API of Red Line trains that I provide (see more details below). -->
 
-fix 404 error handling
+<!-- fix 404 error handling -->
+
+delete this list
+README
+header comments
+
