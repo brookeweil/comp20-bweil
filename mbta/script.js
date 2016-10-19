@@ -203,7 +203,7 @@
         branch1Path = new google.maps.Polyline({
           path: branch1Coords,
           geodesic: true,
-          strokeColor: '#FF0000',
+          strokeColor: '#d7141a',
           strokeOpacity: 1.0,
           strokeWeight: 3
         });
@@ -219,7 +219,7 @@
         branch2Path = new google.maps.Polyline({
           path: branch2Coords,
           geodesic: true,
-          strokeColor: '#FF0000',
+          strokeColor: '#d7141a',
           strokeOpacity: 1.0,
           strokeWeight: 3
         });
@@ -248,7 +248,7 @@
           path: [ {lat: myLat, lng: myLng}, 
                   {lat: closestStation.station.lat, lng:closestStation.station.lng} ],
           geodesic: true,
-          strokeColor: '#428ff4',
+          strokeColor: '#f7777e',
           strokeOpacity: 1.0,
           strokeWeight: 3
         });
