@@ -17,6 +17,7 @@
     var branch1Path;
     var branch2Path;
     var trainStops;
+    var trainData;
     var trainIcon = {
         url: "train.png",
         scaledSize: new google.maps.Size(22, 22),
@@ -128,13 +129,12 @@
             });
     }
 
-    
+
     function loadTrainStops() {
         // Step 1: create an instance of XMLHttpRequest
-        var request = new XMLHttpRequest();
+        request = new XMLHttpRequest();
         // Step 2: Make request to remote resource
-        // NOTE: https://messagehub.herokuapp.com has cross-origin resource sharing enabled
-        request.open("get", "https://rocky-taiga-26352.herokuapp.com/redline.json", true);
+        request.open("get", "https://rocky-taiga-26352.herokuapp.com/redline.json");
         // Step 3: Create handler function to do something with data in response
         request.onreadystatechange = funex;
         // Step 4: Send the request
@@ -143,13 +143,12 @@
     function funex() {
         console.log("The data is => " + request.responseText);
         // Step 5: When data is received, get it and do something with it
+
         if (request.readyState == 4 && request.status == 200) {
-        // if (request.status == 200) {
-            console.log("Saving the data");
             // Step 5A: get the response text
-            var theData = request.responseText;
+            trainData = request.responseText;
             // Step 5B: parse the text into JSON
-            trainStops = JSON.parse(theData);
+            trainStops = JSON.parse(trainData);
         }
     }
 
