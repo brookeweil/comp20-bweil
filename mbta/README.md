@@ -11,6 +11,10 @@
 > ACKNOWLEDGEMENTS
     I recieved some help from Frankie Caiazzo, a Comp20 alum
 
+    I used Prof. Ming Chow's example code as a scaffold for my own code. 
+    I also used given formulas from Stack Overflow to calculate 
+    distance with the Haversine formula.
+
 > HOURS SPENT
     I spent around 10-15 hours on this assignment
     
