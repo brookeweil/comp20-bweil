@@ -11,7 +11,10 @@
 > ACKNOWLEDGEMENTS
     I recieved some help from Frankie Caiazzo, a Comp20 alum
 
-    I used Prof. Ming Chow's example code as a scaffold for my own code. 
+    I used a good portion of Prof. Ming Chow's example code as a scaffold for 
+    my own code, especially the basic map code and the HTTP request/JSON 
+    parsing methods. 
+    
     I also used given formulas from Stack Overflow to calculate 
     distance with the Haversine formula.
 
