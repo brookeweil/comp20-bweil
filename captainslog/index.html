@@ -7,8 +7,34 @@
     <title>Captain's Log</title>
     <link rel="stylesheet" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
     <script>
-        // Your work will be done here...
+    
+    $( document ).ready(function() {
+
+        // Load log
+        var logs = localStorage.getItem ("log");
+        $("#log").html(logs);
+
+        // When 'enter' is pressed
+        $("#msg").keypress(function(event) {
+            if (event.keyCode == 13) { 
+
+                // Log the timestamp & message
+                var logs = localStorage.getItem ("log");
+                localStorage.setItem ("log", "<p>" + "<b>" + (new Date($.now())) 
+                    + "</b>"+ " - " + $("input#msg").val() + "</p>" + logs);
+
+                // Clear the textbox
+                $("input#msg").val("");
+
+                // Display 
+                logs = localStorage.getItem ("log");
+                $("#log").html(logs);
+            } 
+        });
+    });
+
     </script>
 </head>
 
@@ -17,4 +43,7 @@
     <h3>New entry: <input type="text" id="msg" name="msg" size="30" /></h3>
     <div id="log"></div>
 </body>
+
+
+
 </html>
