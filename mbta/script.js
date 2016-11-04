@@ -150,7 +150,7 @@
         // Step 1: create an instance of XMLHttpRequest
         request = new XMLHttpRequest();
         // Step 2: Make request to remote resource
-        request.open("get", "https://rocky-taiga-26352.herokuapp.com/redline.json");
+        request.open("get", "https://dreadful-chupacabra-73426.herokuapp.com/redline.json");
         // Step 3: Create handler function to do something with data in response
         request.onreadystatechange = funex;
         // Step 4: Send the request
