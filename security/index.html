@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Security Breach Results</title>
+    <title>Security</title>
     <meta charset="utf-8" />
     <link href="style.css" rel="stylesheet" />
   </head>
@@ -25,7 +25,8 @@
       <li> <h3> Abstract of Findings </h3>  
         Overall, I found that the database was very vulnerable to bogus data entries
         messign up the entire page. Since there is no data validation on the back end,
-        there is a lot of room to inject malicious content to the server. </li> 
+        there is a lot of room to inject malicious content to the server. This is
+        a huge vulnerability to Cross Site Scripting (XSS). </li> 
 
       <li> <h3> Issue 1 </h3>
         <ol>
@@ -43,29 +44,52 @@
             document to DB </li> 
         </ol></li>
       
+      <!-- TODO from here on... -->
       <li> <h3> Issue 2 </h3>
         <ol>
-          <li> <b>Issue:</b> (e.g., database injection, really bad programming practice) </li> 
-          <li> <b>Location:</b> / page where issue was found </li> 
-          <li> <b>Severity of issue:</b> (e.g., low, medium , or high). Justify your answer. </li> 
-          <li> <b>Description of issue:</b> How did you find it? A screenshot of problem is excellent. </li> 
-          <li> <b>Proof of vulnerability:</b> Show pictures. </li> 
-          <li> <b>Resolution:</b> Make recommendation(s) on how issue can be resolved. Show code if possible. </li> 
+          <li> <b>Issue:</b> Images can be inserted as HTML via POST to the server </li> 
+          <li> <b>Location:</b> 
+            Caused while using POST to https://mysterious-everglades-39591.herokuapp.com/submit, visible 
+            when using GET on https://mysterious-everglades-39591.herokuapp.com/ </li> 
+          <li> <b>Severity of issue:</b> Medium; inserting an image can take up a lot of the page, and 
+            having random images on the page greatly compromises content. </li> 
+          <li> <b>Description of issue:</b> I found that I could insert an image tag while 
+            inserting a username into the database. </li> 
+            <img src="issue2_code.png" style="width:600px" alt="code2"> 
+          <li> <b>Proof of vulnerability:</b> Note the giant meme taking up the page below.</li> 
+            <img src="issue2_pic.png" style="width:600px" alt="pic2"> 
+          <li> <b>Resolution:</b> Screen for angle brackets in DB input before inserting new
+            document to DB </li> 
         </ol></li>
       
       <li> <h3> Issue 3 </h3>
         <ol>
-          <li> <b>Issue:</b> (e.g., database injection, really bad programming practice) </li> 
-          <li> <b>Location:</b> / page where issue was found </li> 
-          <li> <b>Severity of issue:</b> (e.g., low, medium , or high). Justify your answer. </li> 
-          <li> <b>Description of issue:</b> How did you find it? A screenshot of problem is excellent. </li> 
-          <li> <b>Proof of vulnerability:</b> Show pictures. </li> 
-          <li> <b>Resolution:</b> Make recommendation(s) on how issue can be resolved. Show code if possible. </li> 
+          <li> <b>Issue:</b> Site can be redirected through HTML or Javascript via POST to the server  </li> 
+          <li> <b>Location:</b> 
+            Caused while using POST to https://mysterious-everglades-39591.herokuapp.com/submit, visible 
+            when using GET on https://mysterious-everglades-39591.herokuapp.com/ </li> 
+          <li> <b>Severity of issue:</b> HIGH; no one will be able to access the website, and if the 
+            redirect is subtle, users could be fooled into using a fake/malicious website! </li> 
+          <li> <b>Description of issue:</b> I inserted code to redirect the page to one of my favorite
+            Buzzfeed videos while inserting a username into the database </li> 
+            <img src="issue3_code.png" style="width:600px" alt="code3"> 
+          <li> <b>Proof of vulnerability:</b> 
+            See the result of visiting https://mysterious-everglades-39591.herokuapp.com/ actually
+            results in watching a heartwarming Buzzfeed video on YouTube. Try it out:
+            <a href="https://mysterious-everglades-39591.herokuapp.com/"> https://mysterious-everglades-39591.herokuapp.com/ </a> </li> 
+            <img src="issue3_pic.png" style="width:600px" alt="pic3"> 
+          <li> <b>Resolution:</b> 
+            Screen for angle brackets in DB input before inserting new document to DB </li> 
         </ol></li>
 
-
       <li> <h3> Conclusion </h3>
-        You can also list future considerations and recommendations with costs </li>
+        Without screening the data input to the database before inserting it, the
+        site is open to enormous vulnerabilities. The ones I showcased here, via HTML
+        and XSS, are relatively simple to maliciously plant. An easy way to fix this,
+        as Prof. Ming Chow showed in his own example, is to sift out special characters
+        in input fields/query strings from the user before inserting new entries
+        into the database. Making even just this simple fix would greatly improve the
+        security of the site. </li>
   </ul>
   </body>
 </html>
