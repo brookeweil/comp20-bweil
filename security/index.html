@@ -3,7 +3,7 @@
   <head>
     <title>Security Breach Results</title>
     <meta charset="utf-8" />
-    <!-- <link href="style.css" rel="stylesheet" /> -->
+    <link href="style.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -29,32 +29,38 @@
 
       <li> <h3> Issue 1 </h3>
         <ol>
-          <li> Issue (e.g., database injection, really bad programming practice) </li> 
-          <li> Location / page where issue was found </li> 
-          <li> Severity of issue (e.g., low, medium , or high). Justify your answer. </li> 
-          <li> Description of issue. How did you find it? A screenshot of problem is excellent. </li> 
-          <li> Proof of vulnerability. Show pictures. </li> 
-          <li> Resolution. Make recommendation(s) on how issue can be resolved. Show code if possible. </li> 
+          <li> <b>Issue:</b> HTML style can be inserted via POST to the server</li> 
+          <li> <b>Location:</b> 
+            Caused while using POST to https://mysterious-everglades-39591.herokuapp.com/submit, visible 
+            when using GET on https://mysterious-everglades-39591.herokuapp.com/</li> 
+          <li> <b>Severity of issue:</b> Low/medium; style is annoying, but won't alter content </li> 
+          <li> <b>Description of issue:</b> I found that I could insert header format tags while 
+            inserting a username into the database. </li> 
+            <img src="issue1_code.png" style="width:600px" alt="code1"> 
+          <li> <b>Proof of vulnerability:</b> Note the bold format of my name in the score listings.</li> 
+            <img src="issue1_pic.png" style="width:600px" alt="code1"> 
+          <li> <b>Resolution:</b> Screen for angle brackets in DB input before inserting new
+            document to DB </li> 
         </ol></li>
       
       <li> <h3> Issue 2 </h3>
         <ol>
-          <li> Issue (e.g., database injection, really bad programming practice) </li> 
-          <li> Location / page where issue was found </li> 
-          <li> Severity of issue (e.g., low, medium , or high). Justify your answer. </li> 
-          <li> Description of issue. How did you find it? A screenshot of problem is excellent. </li> 
-          <li> Proof of vulnerability. Show pictures. </li> 
-          <li> Resolution. Make recommendation(s) on how issue can be resolved. Show code if possible. </li> 
+          <li> <b>Issue:</b> (e.g., database injection, really bad programming practice) </li> 
+          <li> <b>Location:</b> / page where issue was found </li> 
+          <li> <b>Severity of issue:</b> (e.g., low, medium , or high). Justify your answer. </li> 
+          <li> <b>Description of issue:</b> How did you find it? A screenshot of problem is excellent. </li> 
+          <li> <b>Proof of vulnerability:</b> Show pictures. </li> 
+          <li> <b>Resolution:</b> Make recommendation(s) on how issue can be resolved. Show code if possible. </li> 
         </ol></li>
       
       <li> <h3> Issue 3 </h3>
         <ol>
-          <li> Issue (e.g., database injection, really bad programming practice) </li> 
-          <li> Location / page where issue was found </li> 
-          <li> Severity of issue (e.g., low, medium , or high). Justify your answer. </li> 
-          <li> Description of issue. How did you find it? A screenshot of problem is excellent. </li> 
-          <li> Proof of vulnerability. Show pictures. </li> 
-          <li> Resolution. Make recommendation(s) on how issue can be resolved. Show code if possible. </li> 
+          <li> <b>Issue:</b> (e.g., database injection, really bad programming practice) </li> 
+          <li> <b>Location:</b> / page where issue was found </li> 
+          <li> <b>Severity of issue:</b> (e.g., low, medium , or high). Justify your answer. </li> 
+          <li> <b>Description of issue:</b> How did you find it? A screenshot of problem is excellent. </li> 
+          <li> <b>Proof of vulnerability:</b> Show pictures. </li> 
+          <li> <b>Resolution:</b> Make recommendation(s) on how issue can be resolved. Show code if possible. </li> 
         </ol></li>
 
 
